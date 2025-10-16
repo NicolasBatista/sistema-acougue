@@ -1,8 +1,3 @@
-# Criar o cluster no Kind
-
-$ kind create cluster --name <cluster_name> --config kind-config.yaml
-
----
 # 🧩 Instalar o NGINX Ingress Controller (no Kind)
 
 O Kind não cria LoadBalancer automaticamente, então o NGINX precisa ser exposto via NodePort.
