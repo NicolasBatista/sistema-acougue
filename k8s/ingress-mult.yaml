@@ -7,33 +7,43 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: web1.local
+    # - host: web1.local
+    #   http:
+    #     paths:
+    #       - path: /
+    #         pathType: Prefix
+    #         backend:
+    #           service:
+    #             name: web1
+    #             port:
+    #               number: 8080
+    # - host: web2.local
+    #   http:
+    #     paths:
+    #       - path: /
+    #         pathType: Prefix
+    #         backend:
+    #           service:
+    #             name: web2
+    #             port:
+    #               number: 8080
+    # - host: api.local
+    #   http:
+    #     paths:
+    #       - path: /
+    #         pathType: Prefix
+    #         backend:
+    #           service:
+    #             name: api
+    #             port:
+    #               number: 8080
+    - host: rabbitmq.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: web1
+                name: rabbitmq
                 port:
-                  number: 8080
-    - host: web2.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: web2
-                port:
-                  number: 8080
-    - host: api.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: api
-                port:
-                  number: 8080
+                  number: 15672 # Acessar por 8080
