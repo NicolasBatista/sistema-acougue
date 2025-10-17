@@ -6,7 +6,7 @@ kubectl run -it --rm psql-client --image=postgres:15 --namespace=postgres -- bas
 ## Passo 2
 De dentro do pod execute o comando:
 
-psql -h postgres -U <user>> -d <nome_do_database>
+psql -h postgres -U <user> -d <nome_do_database>
 # senha: admin
 
 ---

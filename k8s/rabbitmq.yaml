@@ -1,4 +1,6 @@
-# rabbitmq-deployment.yaml
+# ===============================
+# PersistentVolumeClaim RabbitMQ
+# ===============================
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -11,6 +13,9 @@ spec:
     requests:
       storage: 500Mi
 ---
+# ===============================
+# Deployment RabbitMQ
+# ===============================
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -30,8 +35,8 @@ spec:
         - name: rabbitmq
           image: rabbitmq:3-management
           ports:
-            - containerPort: 5672    # interno, AMQP
-            - containerPort: 15672   # HTTP (UI)
+            - containerPort: 5672
+            - containerPort: 15672
           env:
             - name: RABBITMQ_DEFAULT_USER
               value: admin
@@ -45,6 +50,9 @@ spec:
           persistentVolumeClaim:
             claimName: rabbitmq-pvc
 ---
+# ===============================
+# Service RabbitMQ (ClusterIP)
+# ===============================
 apiVersion: v1
 kind: Service
 metadata:
