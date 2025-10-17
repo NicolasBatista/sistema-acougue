@@ -23,3 +23,13 @@ Procure por:
 ingress-nginx-controller   NodePort   80:xxxxx/TCP   443:yyyyy/TCP
 
 💡 Esses números são as portas que você usará no localhost para acessar seus serviços no Kind (geralmente 8080 → 80).
+
+---
+#### Passo 4
+Mapear os serviços no Ingress
+
+Utilizar o arquivo ingress-mult.yaml e se estiver usando kind no windows, não se esquecer de editar o C:\Windows\System32\drivers\etc, ex.:
+
+127.0.0.1 web1.local
+127.0.0.1 web2.local
+127.0.0.1 api.local
