@@ -1,8 +1,21 @@
 # rabbitmq-deployment.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rabbitmq-pvc
+  namespace: acougue-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rabbitmq
+  namespace: acougue-system
 spec:
   replicas: 1
   selector:
@@ -24,11 +37,19 @@ spec:
               value: admin
             - name: RABBITMQ_DEFAULT_PASS
               value: admin
+          volumeMounts:
+            - name: rabbitmq-storage
+              mountPath: /var/lib/rabbitmq
+      volumes:
+        - name: rabbitmq-storage
+          persistentVolumeClaim:
+            claimName: rabbitmq-pvc
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq
+  namespace: acougue-system
 spec:
   selector:
     app: rabbitmq
