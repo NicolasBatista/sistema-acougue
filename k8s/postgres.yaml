@@ -28,9 +28,9 @@ spec:
           image: postgres:15
           env:
             - name: POSTGRES_USER
-              value: acougue
+              value: admin
             - name: POSTGRES_PASSWORD
-              value: acougue123
+              value: admin
             - name: POSTGRES_DB
               value: acougue_db
           ports:
